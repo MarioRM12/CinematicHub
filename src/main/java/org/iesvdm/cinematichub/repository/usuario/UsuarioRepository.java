@@ -1,4 +1,4 @@
-package org.iesvdm.cinematichub.repository;
+package org.iesvdm.cinematichub.repository.usuario;
 
 import org.iesvdm.cinematichub.domain.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;

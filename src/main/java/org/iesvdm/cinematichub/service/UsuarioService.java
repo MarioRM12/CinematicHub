@@ -1,7 +1,9 @@
 package org.iesvdm.cinematichub.service;
 
 import org.iesvdm.cinematichub.domain.Usuario;
-import org.iesvdm.cinematichub.repository.UsuarioRepository;
+import org.iesvdm.cinematichub.exception.UsuarioNotFoundException;
+import org.iesvdm.cinematichub.repository.usuario.UsuarioCustomRepositoryJPQLImpl;
+import org.iesvdm.cinematichub.repository.usuario.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -15,31 +17,45 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-//    public List<Usuario> all(String buscar, String ordenar, Pageable pageable) {
-//
-//    }
-//
-//    public Categoria save(Categoria categoria) {
-//        return this.categoriaRepository.save(categoria);
-//    }
-//
-//    public Categoria one(Long id) {
-//        return this.categoriaRepository.findById(id)
-//                .orElseThrow(() -> new PeliculaNotFoundException(id));
-//    }
-//
-//    public Categoria replace(Long id, Categoria categoria) {
-//
-//        return this.categoriaRepository.findById(id).map( p -> (id.equals(categoria.getId())  ?
-//                        this.categoriaRepository.save(categoria) : null))
-//                .orElseThrow(() -> new PeliculaNotFoundException(id));
-//
-//    }
-//
-//    public void delete(Long id) {
-//        this.categoriaRepository.findById(id).map(p -> {this.categoriaRepository.delete(p);
-//                    return p;})
-//                .orElseThrow(() -> new PeliculaNotFoundException(id));
-//    }
+    @Autowired
+    private UsuarioCustomRepositoryJPQLImpl usuarioCustomRepositoryJPQLImpl;
+
+    public List<Usuario> all() {
+        return this.usuarioRepository.findAll();
+    }
+
+    public List<Usuario> all(String buscar, String ordenar, Pageable pageable) {
+        return usuarioCustomRepositoryJPQLImpl.queryCustomUsuario(
+                Optional.ofNullable(buscar),
+                Optional.ofNullable(ordenar),
+                pageable
+        );
+    }
+
+    public Usuario save(Usuario usuario) {
+        return this.usuarioRepository.save(usuario);
+    }
+
+    public Usuario one(Long id) {
+        return this.usuarioRepository.findById(id)
+                .orElseThrow(() -> new UsuarioNotFoundException(id));
+    }
+
+    public Usuario replace(Long id, Usuario usuario) {
+        return this.usuarioRepository.findById(id).map(u -> {
+            if (id.equals(usuario.getIdUsuario())) {
+                return this.usuarioRepository.save(usuario);
+            } else {
+                return null;
+            }
+        }).orElseThrow(() -> new UsuarioNotFoundException(id));
+    }
+
+    public void delete(Long id) {
+        this.usuarioRepository.findById(id).map(u -> {
+            this.usuarioRepository.delete(u);
+            return u;
+        }).orElseThrow(() -> new UsuarioNotFoundException(id));
+    }
 
 }
