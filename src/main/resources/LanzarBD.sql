@@ -1,3 +1,4 @@
+
 -- Insertar usuarios
 INSERT INTO usuario (username, nombre, apellido, fecha_nacimiento, correo) VALUES
    ('user1', 'John', 'Doe', '1990-01-15', 'john.doe@example.com'),
