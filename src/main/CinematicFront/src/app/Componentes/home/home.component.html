@@ -1,0 +1,205 @@
+<!-- CUERPO PRINCIPAL -->
+
+<div class="container-fluid bg-secondary">
+  <div class="container-xl">
+
+    <!-- TITULO DEL CARRUSEL -->
+
+    <div class="row pt-5">
+      <h1 class="text-center text-white">Proximos Estrenos</h1>
+    </div>
+
+    <!-- CARRUSEL -->
+
+    <div id="carouselExampleCaptions" class="carousel slide mt-2 mb-4">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active col-1">
+          <img src="./assets/images/napoleaon.jpg" class="d-block w-25 m-auto" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Napoleon</h5>
+            <p>El alucinante biopic de Ridley Scott</p>
+
+            <!-- BOTON VER TRAILER -->
+
+            <button type="button" class="btn btn-light"  data-bs-toggle="modal" data-bs-target="#Napoleon">Ver Trailer</button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="Napoleon" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content bg-primary rounded">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5 text-center text-white" id="exampleModalLabel">Trailer Napoleon</h1>
+                    <div class="spinner-border m-2" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <button type="button" class="btn-close me-2" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="container-fluid border bg-black " style="height: 300px;">
+                      <i class="fa-brands fa-youtube text-white h-25 mt-5 pt-5"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="./assets/images/killers_of_the_flower_moon.jpg" class="d-block w-25 m-auto" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Killers of the flower moon</h5>
+            <p>La impresionante nueva historia de Martin Scorsese</p>
+            <!-- BOTON VER TRAILER -->
+
+            <button type="button" class="btn btn-light"  data-bs-toggle="modal" data-bs-target="#AsesinosDeLaLuna">Ver Trailer</button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="AsesinosDeLaLuna" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content bg-primary rounded">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5 text-center text-white" id="exampleModalLabel LosAsesinos">Trailer Los asesinos de la luna</h1>
+                    <div class="spinner-border m-2" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <button type="button" class="btn-close me-2" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="container-fluid border bg-black " style="height: 300px;">
+                      <i class="fa-brands fa-youtube text-white h-25 mt-5 pt-5"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="./assets/images/the_hunger_games.jpg" class="d-block w-25 m-auto" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Los Juegos del Hambre: La Balada de Pajaros</h5>
+            <p>La adaptacion del spin off protagonizado por Snow ha impactado en taquilla</p>
+            <!-- BOTON VER TRAILER -->
+
+            <button type="button" class="btn btn-light"  data-bs-toggle="modal" data-bs-target="#LosJuegosDelHambre">Ver Trailer</button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="LosJuegosDelHambre" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content bg-primary rounded">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5 text-center text-white" id="exampleModalLabel LosJuegos">Trailer Los Juegos del Hambre</h1>
+                    <div class="spinner-border m-2" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <button type="button" class="btn-close me-2" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="container-fluid border bg-black " style="height: 300px;">
+                      <i class="fa-brands fa-youtube text-white h-25 mt-5 pt-5"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <!-- 1º Sección -->
+
+    <div class="row border-top">
+
+      <!-- Noticias -->
+
+      <div class="col-6 border-end mt-5">
+        <h2 class="text-center text-white p-2">Noticias</h2>
+        <div class="row justify-content-around mt-5">
+          <div class="col-6">
+            <img src="./assets/images/Noticia1.PNG" class="img-fluid" alt="">
+            <p class="text-center text-white mt-2">Napoleón Arrasa en la taquilla de EE.UU</p>
+            <div class="row justify-content-around mt-5">
+              <a href="#" class="btn btn-light col-5" tabindex="-1" role="button" aria-disabled="true">Ver Noticias</a>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="col-5 m-auto pb-2">
+              <img src="./assets/images/David fincher.PNG" class="img-fluid" alt="">
+            </div>
+            <div class="col-5 m-auto pb-2">
+              <img src="./assets/images/Jenifer lawrence.PNG" class="img-fluid h-25 pb-2" alt="">
+            </div>
+            <!-- <div class="col-5 m-auto pb-2">
+            <img src="./imagenes/Ryan Gosling.PNG" class="img-fluid h-25" alt="">
+            </div> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Quizz Game -->
+
+      <div class="col-6 mt-5">
+        <h2 class="text-center text-white p-2">¿Te suena este fotograma?</h2>
+        <div class="col-8 mt-5 m-auto">
+          <img src="./assets/images/fotograma Interstellar.PNG" class="img-fluid" alt="">
+        </div>
+        <p class="text-center text-white mt-4">Una pelicula y una serie para adivinar cada día</p>
+        <div class="row justify-content-around mt-4">
+          <a href="" [routerLink]="['/FrameQuizz']" class="btn btn-light col-4" tabindex="-1" role="button" aria-disabled="true">Acceder a FrameQuizz</a>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- 2º sección -->
+
+    <div class="row justify-content-around border-top mt-5 pb-5">
+
+      <!-- TITULO -->
+
+      <h2 class="text-white text-center mt-3">Tendencias</h2>
+
+      <!-- Tendencias -->
+
+      <div class="col-2">
+        <img src="./assets/images/El asesino.jpg" class="img-fluid" alt="">
+        <span class="text-center text-white">1</span>
+      </div>
+      <div class="col-2">
+        <img src="./assets/images/loki.jpg" class="img-fluid" alt="">
+        <span class="text-center text-white">2</span>
+      </div>
+      <div class="col-2">
+        <img src="./assets/images/the_crown.jpg" class="img-fluid" alt="">
+        <span class="text-center text-white">3</span>
+      </div>
+      <div class="col-2">
+        <img src="./assets/images/chernobyl.jpg" class="img-fluid" alt="">
+        <span class="text-center text-white">4</span>
+      </div>
+      <div class="col-2">
+        <img src="./assets/images/El asesino.jpg" class="img-fluid" alt="">
+        <span class="text-center text-white">5</span>
+      </div>
+
+
+    </div>
+
+  </div>
+</div>
