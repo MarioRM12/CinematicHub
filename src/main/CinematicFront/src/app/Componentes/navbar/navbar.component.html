@@ -40,10 +40,8 @@
                   </button>
                 </h2>
                 <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                  <ul class="p-5">
-                    <li><a href="#">Loki</a></li>
-                    <li><a href="#">Rick y Morty</a></li>
-                    <li><a href="#">Juego de tronos</a></li>
+                  <ul class="m-1" style="list-style: none;" *ngFor="let s of series; let i=index">
+                    <li class="p-1" ><a href="#">{{ (i+1) + " - " + s.titulo}}</a></li>
                   </ul>
                 </div>
               </div>

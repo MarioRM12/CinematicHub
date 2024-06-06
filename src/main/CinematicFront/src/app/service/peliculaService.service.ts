@@ -7,7 +7,7 @@ import { Pelicula } from "../interface/peliculas.interfaces";
   providedIn: 'root'
 })
 export class PeliculaService {
-  private apiUrl = 'http://localhost:8080/Peliculas';  // Cambia esta URL a la de tu API
+  private apiUrl = 'http://localhost:8080/peliculas';  // Cambia esta URL a la de tu API
 
   constructor(private http: HttpClient) {}
 

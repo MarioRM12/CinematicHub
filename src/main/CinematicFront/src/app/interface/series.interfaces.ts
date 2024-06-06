@@ -1,4 +1,6 @@
 export interface Serie {
-  id: number,
-  titulo: string
+  idSerie: number;
+  titulo: string;
+  descripcion: string;
+  imagen: string;
 }

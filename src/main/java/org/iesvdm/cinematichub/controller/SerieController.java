@@ -13,7 +13,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @CrossOrigin("http://localhost:4200")
-@RequestMapping("/Series")
+@RequestMapping("/series")
 public class SerieController {
 
     @Autowired

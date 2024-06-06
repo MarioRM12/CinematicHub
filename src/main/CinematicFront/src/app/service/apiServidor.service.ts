@@ -12,9 +12,9 @@ const httpOptions = {
   })
 };
 const URLHOST = "http://localhost:8080/"
-const URLPELICULAS = URLHOST + "Peliculas";
-const URLSERIES = URLHOST + "Series";
-const URLLISTAS = URLHOST + "Listas";
+const URLPELICULAS = URLHOST + "peliculas";
+const URLSERIES = URLHOST + "series";
+const URLLISTAS = URLHOST + "listas";
 
 @Injectable({
   providedIn: 'root'
