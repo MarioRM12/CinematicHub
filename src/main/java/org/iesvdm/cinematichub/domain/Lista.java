@@ -1,7 +1,9 @@
 package org.iesvdm.cinematichub.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,14 +26,17 @@ public class Lista {
     @EqualsAndHashCode.Include
     private Long idLista;
 
+    @Column(name = "nombre", nullable = false)
+    private String nombre;
+
     @ManyToOne
     @JoinColumn(name = "id_usuario", nullable = false)
-    @JsonIgnore
+    @JsonIgnoreProperties({"listas"})
     private Usuario usuarioCreador;
 
     @Column(name = "fecha_creacion")
     @Temporal(TemporalType.DATE)
-    @JsonFormat(pattern = "dd-MMMM-yyyy", shape = JsonFormat.Shape.STRING)
+    @JsonFormat(pattern = "yyyy-MM-dd", shape = JsonFormat.Shape.STRING)
     private Date fechaCreacion;
 
     @ManyToMany

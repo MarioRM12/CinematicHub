@@ -8,7 +8,7 @@ import {NgFor} from "@angular/common";
   templateUrl: './pelicula.component.html',
   imports: [NgFor],
   standalone: true,
-  styleUrls: ['./pelicula.component.css']
+  styleUrls: ['./pelicula.component.scss']
 })
 export class PeliculaComponent implements OnInit {
   peliculas: Pelicula[] = [];
@@ -21,7 +21,7 @@ export class PeliculaComponent implements OnInit {
   }
 
   getPeliculas(): void {
-    this.peliculaService.getPeliculas().subscribe(peliculas => {
+    this.peliculaService.getAllPeliculas().subscribe(peliculas => {
       this.peliculas = peliculas;
     });
   }

@@ -2,6 +2,7 @@ package org.iesvdm.cinematichub.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.iesvdm.cinematichub.domain.Pelicula;
+import org.iesvdm.cinematichub.service.TMDBService;
 import org.iesvdm.cinematichub.service.PeliculaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -12,12 +13,15 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@CrossOrigin("http://localhost:4200")
+//@CrossOrigin("http://localhost:4200/*")
 @RequestMapping("/peliculas")
 public class PeliculaController {
 
     @Autowired
     private PeliculaService peliculaService;
+
+    @Autowired
+    private TMDBService tmdbService;
 
     @GetMapping({"", "/"})
     public List<Pelicula> all(
@@ -27,6 +31,11 @@ public class PeliculaController {
             @RequestParam(defaultValue = "10") int size
     ) {
         return this.peliculaService.all(buscar, ordenar, PageRequest.of(page, size));
+    }
+
+    @GetMapping({"/all"})
+    public List<Pelicula> all() {
+        return this.peliculaService.all();
     }
 
     @PostMapping({"", "/"})
@@ -50,5 +59,15 @@ public class PeliculaController {
     public void deletePelicula(@PathVariable("id") Long id) {
         this.peliculaService.delete(id);
     }
+
+//    @GetMapping("/buscar")
+//    public String getMoviesByTitle(@RequestParam String title) {
+//        return tmdbService.getMoviesByTitle(title);
+//    }
+//
+//    @GetMapping("/poster/*")
+//    public String getMoviesByTitle(@RequestParam String title) {
+//        return tmdbService.getMoviePoster(title);
+//    }
 
 }

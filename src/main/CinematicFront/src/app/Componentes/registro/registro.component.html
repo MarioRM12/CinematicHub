@@ -1,0 +1,76 @@
+<div class="container-fluid bg-secondary text-black min-vh-100 justify-content-around align-items-center">
+  <h1 class="text-center text-white p-5">Formulario de Registro</h1>
+  <div class="container-xl">
+    <form [formGroup]="registroForm" (ngSubmit)="onSubmit()" class="row g-4 bg-light p-4 rounded" style="width: 75%; margin: auto">
+      <!-- Nombre -->
+      <div class="col-md-6">
+        <label for="inputNombre" class="form-label">Nombre</label>
+        <input type="text" formControlName="inputNombre" class="form-control" placeholder="Mario" id="inputNombre">
+        <div *ngIf="registroForm.get('inputNombre')?.invalid && registroForm.get('inputNombre')?.touched" class="text-danger">
+          El nombre es requerido.
+        </div>
+      </div>
+      <!-- Apellido -->
+      <div class="col-md-6">
+        <label for="inputApellido" class="form-label">Apellido</label>
+        <input type="text" formControlName="inputApellido" class="form-control" placeholder="Romero" id="inputApellido">
+        <div *ngIf="registroForm.get('inputApellido')?.invalid && registroForm.get('inputApellido')?.touched" class="text-danger">
+          El apellido es requerido.
+        </div>
+      </div>
+      <!-- Email -->
+      <div class="col-12">
+        <label for="inputEmail" class="form-label">Email</label>
+        <input type="email" formControlName="inputEmail" class="form-control" id="inputEmail" placeholder="Ejemplo@ejemplo.com">
+        <div *ngIf="registroForm.get('inputEmail')?.invalid && registroForm.get('inputEmail')?.touched" class="text-danger">
+          Introduzca un correo electrónico válido.
+        </div>
+      </div>
+      <!-- Password -->
+      <div class="col-12">
+        <label for="inputPassword" class="form-label">Password</label>
+        <input type="password" formControlName="inputPassword" class="form-control" id="inputPassword" placeholder="Mínimo 6 caracteres, 1 mayúscula, 1 número y 1 caracter especial">
+        <div *ngIf="registroForm.get('inputPassword')?.invalid && registroForm.get('inputPassword')?.touched" class="text-danger">
+          La contraseña debe tener al menos 6 caracteres, una mayúscula, un número y un caracter especial.
+        </div>
+      </div>
+      <!-- Repetir Password -->
+      <div class="col-12">
+        <label for="inputRPassword" class="form-label">Repetir Password</label>
+        <input type="password" formControlName="inputRPassword" class="form-control" id="inputRPassword" placeholder="Repite la contraseña">
+        <div *ngIf="registroForm.hasError('notSame') && registroForm.get('inputRPassword')?.touched" class="text-danger">
+          Las contraseñas no coinciden.
+        </div>
+      </div>
+      <!-- Username -->
+      <div class="col-md-6">
+        <label for="inputUsername" class="form-label">Username</label>
+        <input type="text" formControlName="inputUsername" class="form-control" placeholder="CinematicUser" id="inputUsername">
+        <div *ngIf="registroForm.get('inputUsername')?.invalid && registroForm.get('inputUsername')?.touched" class="text-danger">
+          El username es requerido.
+        </div>
+      </div>
+      <!-- Fecha Nacimiento -->
+      <div class="col-md-6">
+        <label for="inputFechaNacimiento" class="form-label">Fecha Nacimiento</label>
+        <input type="date" formControlName="inputFechaNacimiento" class="form-control" placeholder="01/01/2000" id="inputFechaNacimiento">
+        <div *ngIf="registroForm.get('inputFechaNacimiento')?.invalid && registroForm.get('inputFechaNacimiento')?.touched" class="text-danger">
+          La fecha de nacimiento es requerida.
+        </div>
+      </div>
+      <!-- Botón de envío -->
+      <div class="col-12 text-center pt-3">
+        <button type="submit" class="btn btn-primary" [disabled]="registroForm.invalid">Register</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!--      <div class="col-12"> BOTON PARA TERMINOS-->
+<!--        <div class="form-check">-->
+<!--          <input class="form-check-input" style="border: 2px solid #343a40;" type="checkbox" id="gridCheck">-->
+<!--          <label class="form-check-label" for="gridCheck">-->
+<!--            Check me out-->
+<!--          </label>-->
+<!--        </div>-->
+<!--      </div> //util  d-grid gap-2-->

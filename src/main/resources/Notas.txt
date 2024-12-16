@@ -1,4 +1,56 @@
-SWAGGER
+- Lista de tareas:
+
+- Vista de adim. -> buscar info.
+- Vista de cada objeto: peli, serie...-> Modelo de peli, info de peli
+- Logica -> funcionamiento base -> Como hacer para las imagenes
+- Minijuego
+- Noticias sobre cine -> API DE NOTS??
+- Perfil -> Login, Crear, Listas de usuarios?
+- Buscador -> quitarlo de la pagina principal, solo de cada categoría? global?
+- hacer la pagina en inglés
+
+- EMAIL SENDER - NO VA
+
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=cinematichubsupp@gmail.com
+spring.mail.password=Cinematichub.1?
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+spring.mail.properties.mail.smtp.starttls.required=true
+
+- SWAGGER
 
 http://localhost:8080/swagger-ui/index.html#/
 
+- TMDB
+
+info API:
+
+https://developer.themoviedb.org/reference/intro/getting-started
+
+Credenciales CinematicHUB:
+
+    - Acces token auth:
+    eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5YzE5NjI5MzEwMTVjMTJhMmY4OTZlOTBhYTljZjg2YiIsIm5iZiI6MTczMjA0NzI2Mi43ODUxNjkxLCJzdWIiOiI2NzFlOWNlMTM0YzBmYWJkNjgxZDA2NWEiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.tLyuP8Kbpz8-Rm8KuimzAdL0LzBYr7855cz7YuBmfIE
+
+    - API KEY:
+    9c1962931015c12a2f896e90aa9cf86b
+
+
+- OMDB
+
+Send all data requests to:
+
+http://www.omdbapi.com/?apikey=[yourkey]&
+
+Poster API requests:
+
+http://img.omdbapi.com/?apikey=[yourkey]&
+
+- Doc Info de Proyecto
+
+https://docs.google.com/document/d/1MwjXgRQwFVbGV2mNuQeJEq1TA7FASksbz9i5edfpx4Q/edit?usp=sharing
+
+
+Romero Martínez,mario.r.m121102@gmail.com,0017-06-24,Mario,pruebaFront

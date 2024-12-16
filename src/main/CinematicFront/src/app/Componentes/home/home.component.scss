@@ -1,0 +1,29 @@
+.carousel-inner {
+  position: relative;
+}
+
+#fondo {
+  filter: blur(5px);
+  width: 100%; /* Asegúrate de que la imagen cubra todo el contenedor del carrusel */
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%); /* Centra la imagen de fondo */
+  z-index: 0;
+}
+
+.carousel-item .text-center {
+  position: relative;
+  z-index: 1;
+}
+
+img + img {
+  position: relative;
+  z-index: 1;
+}
+
+#botonCarru {
+  z-index: 1;
+  position: relative;
+  border: 1px solid #000000;
+}

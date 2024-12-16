@@ -1,0 +1,74 @@
+<div class="container-fluid bg-secondary">
+  <div class="container-xl vh-100 text-white">
+    <div *ngIf="detalle; else noData">
+      <!-- Banner -->
+      <div
+        class="episode-banner position-relative"
+        [style.backgroundImage]="'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://image.tmdb.org/t/p/original' + detalle.backdrop_path + ')'"
+      >
+        <div class="row align-items-center">
+          <!-- Imagen del póster -->
+          <div class="col-auto">
+            <img
+              [src]="'https://image.tmdb.org/t/p/w300' + detalle.poster_path"
+              alt="{{ detalle.title }} poster"
+              class="episode-poster img-thumbnail shadow-sm"
+            />
+          </div>
+          <!-- Información principal -->
+          <div class="col">
+            <h2 class="mb-2">{{ detalle.title }}</h2>
+            <p>
+              <strong>Fecha de lanzamiento:</strong> {{ detalle.release_date }}
+            </p>
+            <p>
+              <strong>Descripción:</strong> {{ detalle.overview || 'No disponible.' }}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Información adicional -->
+      <div class="mt-4 bg-primary rounded p-3">
+        <h5 class="text-uppercase text-center">Detalles</h5>
+        <div class="row gx-3 gy-3">
+          <div class="col-md-4 bg-light text-dark p-3 rounded">
+            <p><strong>Idioma:</strong> {{ detalle.original_language }}</p>
+          </div>
+          <div class="col-md-4 bg-light text-dark p-3 rounded">
+            <p><strong>Productoras:</strong></p>
+            <ul>
+              <li *ngFor="let company of detalle.production_companies">
+                {{ company.name }} ({{ company.origin_country }})
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4 bg-light text-dark p-3 rounded">
+            <p><strong>Géneros:</strong></p>
+            <ul>
+              <li *ngFor="let genre of detalle.genres">
+                {{ genre.name }}
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4 bg-light text-dark p-3 rounded">
+            <p><strong>Duración:</strong> {{ detalle.runtime }} minutos</p>
+          </div>
+          <div class="col-md-4 bg-light text-dark p-3 rounded">
+            <p><strong>Estado:</strong> {{ detalle.status }}</p>
+          </div>
+          <div class="text-center col-md-4 bg-light text-dark p-3 rounded">
+            <button class="btn btn-success" (click)="agregarAPrimeraLista()">Agregar a mi lista</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mensaje de error o contenido no encontrado -->
+    <ng-template #noData>
+      <div class="alert alert-warning mt-3">
+        {{ errorMessage || 'No se encontraron detalles de la película.' }}
+      </div>
+    </ng-template>
+  </div>
+</div>

@@ -12,7 +12,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@CrossOrigin("http://localhost:4200")
+//@CrossOrigin("http://localhost:4200/*")
 @RequestMapping("/series")
 public class SerieController {
 
@@ -27,6 +27,11 @@ public class SerieController {
             @RequestParam(defaultValue = "10") int size
     ) {
         return this.serieService.all(buscar, ordenar, PageRequest.of(page, size));
+    }
+
+    @GetMapping({ "/all"})
+    public List<Serie> all() {
+        return this.serieService.all();
     }
 
     @PostMapping({"", "/"})

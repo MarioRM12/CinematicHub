@@ -60,4 +60,9 @@ public class PeliculaService {
         }).orElseThrow(() -> new PeliculaNotFoundException(id));
     }
 
+    public Pelicula findOrCreate(Pelicula pelicula) {
+        Optional<Pelicula> existente = peliculaRepository.findById(pelicula.getIdPelicula());
+        return existente.orElseGet(() -> this.peliculaRepository.save(pelicula));
+    }
+
 }

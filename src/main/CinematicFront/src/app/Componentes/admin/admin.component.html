@@ -1,0 +1,195 @@
+<div class="container-fluid bg-secondary" xmlns:th="http://www.w3.org/1999/xhtml">
+  <div class="container-xl p-5">
+    <!-- Título y saludo al administrador -->
+    <h1 class="text-center text-white p-5">Bienvenido, {{ adminName }}</h1>
+
+    <!-- Acordeones para las entidades -->
+    <div class="accordion" id="accordionExample">
+      <!-- Gestión de Usuarios -->
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseUsuarios" aria-expanded="true" aria-controls="collapseUsuarios">
+            Usuarios
+          </button>
+        </h2>
+        <div id="collapseUsuarios" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <!-- Formulario para crear/editar usuarios -->
+            <form [formGroup]="usuarioForm" (ngSubmit)="onSaveUsuario()">
+              <div class="mb-3">
+                <label class="form-label">ID (Solo para edición)</label>
+                <input type="number" class="form-control" formControlName="idUsuario" placeholder="Ingrese el ID">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Usuario</label>
+                <input type="text" class="form-control" formControlName="username" placeholder="Ingrese el nombre de usuario">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control" formControlName="password" placeholder="Ingrese la contraseña">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input type="text" class="form-control" formControlName="nombre" placeholder="Ingrese el nombre">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Apellido</label>
+                <input type="text" class="form-control" formControlName="apellido" placeholder="Ingrese el apellido">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" formControlName="correo" placeholder="Ingrese el correo">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Fecha de Nacimiento</label>
+                <input type="date" class="form-control" formControlName="fechaNacimiento">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Rol</label>
+                <select class="form-control" formControlName="rol">
+                  <option value="ADMIN">Administrador</option>
+                  <option value="USER">Usuario</option>
+                </select>
+              </div>
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary" [disabled]="usuarioForm.invalid">Guardar Usuario</button>
+              </div>
+            </form>
+
+            <!-- Lista de usuarios -->
+            <ul class="list-group mt-4">
+              <li *ngFor="let usuario of usuariosList" class="list-group-item d-flex justify-content-between align-items-center">
+                {{ usuario.nombre }} {{ usuario.apellido }} ({{ usuario.rol }})
+                <div>
+                  <button class="btn btn-sm btn-warning me-2" (click)="onEditUsuario(usuario)">Editar</button>
+                  <button class="btn btn-sm btn-danger" (click)="onDeleteUsuario(usuario.idUsuario)">Eliminar</button>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gestión de Películas -->
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePeliculas" aria-expanded="false" aria-controls="collapsePeliculas">
+            Películas
+          </button>
+        </h2>
+        <div id="collapsePeliculas" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <form [formGroup]="peliculaForm" (ngSubmit)="onSavePelicula()">
+              <div class="mb-3">
+                <label class="form-label">ID (Solo para edición)</label>
+                <input type="number" class="form-control" formControlName="idPelicula" placeholder="Ingrese el ID">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Título</label>
+                <input type="text" class="form-control" formControlName="titulo" placeholder="Ingrese el título">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Descripción</label>
+                <textarea class="form-control" formControlName="descripcion" placeholder="Ingrese la descripción"></textarea>
+              </div>
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary" [disabled]="peliculaForm.invalid">Guardar Película</button>
+              </div>
+            </form>
+
+            <ul class="list-group mt-4">
+              <li *ngFor="let pelicula of peliculasList" class="list-group-item d-flex justify-content-between align-items-center">
+                {{ pelicula.titulo }}
+                <div>
+                  <button class="btn btn-sm btn-warning me-2" (click)="onEditPelicula(pelicula)">Editar</button>
+                  <button class="btn btn-sm btn-danger" (click)="onDeletePelicula(pelicula.idPelicula)">Eliminar</button>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gestión de Series -->
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeries" aria-expanded="false" aria-controls="collapseSeries">
+            Series
+          </button>
+        </h2>
+        <div id="collapseSeries" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <form [formGroup]="serieForm" (ngSubmit)="onSaveSerie()">
+              <div class="mb-3">
+                <label class="form-label">ID (Solo para edición)</label>
+                <input type="number" class="form-control" formControlName="idSerie" placeholder="Ingrese el ID">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Título</label>
+                <input type="text" class="form-control" formControlName="titulo" placeholder="Ingrese el título">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Descripción</label>
+                <textarea class="form-control" formControlName="descripcion" placeholder="Ingrese la descripción"></textarea>
+              </div>
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary" [disabled]="serieForm.invalid">Guardar Serie</button>
+              </div>
+            </form>
+
+            <ul class="list-group mt-4">
+              <li *ngFor="let serie of seriesList" class="list-group-item d-flex justify-content-between align-items-center">
+                {{ serie.titulo }}
+                <div>
+                  <button class="btn btn-sm btn-warning me-2" (click)="onEditSerie(serie)">Editar</button>
+                  <button class="btn btn-sm btn-danger" (click)="onDeleteSerie(serie.idSerie)">Eliminar</button>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gestión de Listas -->
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseListas" aria-expanded="false" aria-controls="collapseListas">
+            Listas
+          </button>
+        </h2>
+        <div id="collapseListas" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <form [formGroup]="listaForm" (ngSubmit)="onSaveLista()">
+              <div class="mb-3">
+                <label class="form-label">ID (Solo para edición)</label>
+                <input type="number" class="form-control" formControlName="idLista" placeholder="Ingrese el ID">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input type="text" class="form-control" formControlName="nombre" placeholder="Ingrese el nombre de la lista">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Fecha de creación</label>
+                <input type="date" class="form-control" formControlName="fechaCreacion">
+              </div>
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary" [disabled]="listaForm.invalid">Guardar Lista</button>
+              </div>
+            </form>
+
+            <ul class="list-group mt-4">
+              <li *ngFor="let lista of listasList" class="list-group-item d-flex justify-content-between align-items-center">
+                {{ lista.nombre }} (Creado el: {{ lista.fechaCreacion | date:'dd/MM/yyyy' }})
+                <div>
+                  <small class="text-muted">Creado por: {{ lista.usuarioCreador?.username }}   </small>
+                  <button class="btn btn-sm btn-warning me-2" (click)="onEditLista(lista)">Editar</button>
+                  <button class="btn btn-sm btn-danger" (click)="onDeleteLista(lista.idLista)">Eliminar</button>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,27 +1,67 @@
-
 <div class="container-fluid bg-secondary">
   <div class="container-xl pt-5 pb-5">
-
     <h1 class="text-center text-white p-5">FrameQuizz</h1>
 
-    <div class="col-12 text-center text-white pb-5 border-bottom">
-      <div class="row justify-content-center">
-        <h3 class="col-2 border-end">Pelicula</h3>
-        <h3 class="col-2">Serie</h3>
-      </div>
+    <!-- Selector Película/Serie -->
+    <div class="text-center text-white pb-5 border-bottom">
+      <button
+        class="btn btn-light me-4"
+        [class.active]="!isSeries"
+        (click)="toggleType()">
+        Película
+      </button>
+      <button
+        class="btn btn-light"
+        [class.active]="isSeries"
+        (click)="toggleType()">
+        Serie
+      </button>
     </div>
 
-    <div class="col-12 m-auto mt-5 mb-5 border-bottom">
+    <!-- Imagen desenfocada -->
+    <div *ngIf="currentItem" class="col-12 m-auto mt-5 mb-5 border-bottom text-center">
       <div class="col-5 m-auto">
-        <img src="./assets/images/fotograma Interstellar.PNG" class="img-fluid" alt="">
+        <img
+          [src]="currentItem.posterUrl"
+          class="img-fluid rounded border w-75"
+          [style.filter]="'blur(' + blurLevel + 'px)'"
+          alt="Poster desenfocado"
+        />
       </div>
-      <div class="col-12 mt-4 mb-4">
-        <form class="col-4 m-auto d-flex" role="search">
-          <input class="form-control bottom me-2" type="search" placeholder="Introduce el titulo de la pelicula" aria-label="Search">
-          <button type="button" class="btn btn-light">Enviar</button>
+
+      <!-- Formulario de intentos -->
+      <div *ngIf="!hasWon" class="col-12 mt-4 mb-4">
+        <form (ngSubmit)="makeGuess()" class="col-4 m-auto d-flex" autocomplete="off">
+          <input
+            [(ngModel)]="guessInput"
+            name="guessInput"
+          class="form-control me-2"
+          type="text"
+          list="titleOptions"
+          placeholder="Introduce el título..."
+          required
+          />
+          <button type="submit" class="btn btn-light">Enviar</button>
         </form>
       </div>
-    </div>
 
+      <!-- Contador de intentos -->
+      <div class="text-center text-danger mt-3 mb-3">
+        <span>Intentos restantes</span>
+        <div class="d-flex justify-content-center gap-2">
+          <span
+            *ngFor="let attempt of errorList"
+            class="badge bg-danger"
+            style="text-decoration: line-through;">
+            ❌
+          </span>
+        </div>
+      </div>
+
+      <!-- Mensaje de victoria -->
+      <div *ngIf="hasWon" class="text-success mt-3">
+        <h3>¡Correcto! El título era "{{ currentItem.title }}"</h3>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,0 +1,26 @@
+/* Ajustar la imagen del póster */
+.episode-poster {
+  max-width: 200px;
+  float: right;
+  margin-left: 20px;
+  border-radius: 5px;
+}
+
+/* Fondo desenfocado del banner */
+.episode-banner {
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* Estilos para las columnas con fondo claro */
+.bg-light {
+  background-color: #f8f9fa !important;
+  border: 1px solid #dddddd;
+}
+
+/* Contenedor adicional de información */
+.bg-dark {
+  color: white;
+}

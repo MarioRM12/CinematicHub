@@ -26,9 +26,6 @@ public class Pelicula {
     private String descripcion;
 
     @Column(name = "imagen")
-    private String imagen; // Puede almacenar la URL de la imagen
+    private String imagen;
 
-    // Almacenar la imagen en la base de datos, puedes usar un campo tipo byte[]
-    // @Lob
-    // private byte[] imagen;
 }

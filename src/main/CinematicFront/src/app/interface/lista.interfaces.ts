@@ -1,5 +1,12 @@
+import {Serie} from "./series.interfaces";
+import {Pelicula} from "./peliculas.interfaces";
+import {Usuario} from "./usuario.interfaces";
+
 export interface Lista {
-  id: number,
-  nombre: string,
-  partido: number
+  idLista: number;
+  nombre: string;
+  usuarioCreador: Usuario;
+  fechaCreacion: string;
+  peliculas: Array<Pelicula>;
+  series: Array<Serie>;
 }

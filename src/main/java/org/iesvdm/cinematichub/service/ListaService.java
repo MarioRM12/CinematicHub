@@ -1,6 +1,8 @@
 package org.iesvdm.cinematichub.service;
 
 import org.iesvdm.cinematichub.domain.Lista;
+import org.iesvdm.cinematichub.domain.Pelicula;
+import org.iesvdm.cinematichub.exception.ListaNotFoundException;
 import org.iesvdm.cinematichub.exception.PeliculaNotFoundException;
 import org.iesvdm.cinematichub.repository.lista.ListaCustomRepositoryJPQLImpl;
 import org.iesvdm.cinematichub.repository.lista.ListaRepository;
@@ -59,4 +61,18 @@ public class ListaService {
                 .orElseThrow(() -> new PeliculaNotFoundException(id));
     }
 
+    public Lista agregarPeliculaALista(Long idLista, Pelicula pelicula) {
+        return this.listaRepository.findById(idLista).map(lista -> {
+            lista.getPeliculas().add(pelicula); // Asumiendo que existe una relación con películas
+            return this.listaRepository.save(lista);
+        }).orElseThrow(() -> new ListaNotFoundException(idLista)); // Manejo de error para listas no encontradas
+    }
+
+    public void eliminarPeliculaDeLista(Long idLista, Long idPelicula) {
+        listaRepository.findById(idLista).map(lista -> {
+            lista.getPeliculas().removeIf(pelicula -> pelicula.getIdPelicula().equals(idPelicula));
+            listaRepository.save(lista);
+            return lista;
+        }).orElseThrow(() -> new ListaNotFoundException(idLista));
+    }
 }
